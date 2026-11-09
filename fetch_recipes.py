@@ -92,7 +92,7 @@ def parse(u):
     rec = {}
 
     try:
-        r = requests.get(u, headers=headers)
+        r = requests.get(u, headers=headers, timeout=30)
 
         if r.status_code == 200:
             html = r.text
@@ -143,7 +143,7 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.ERROR)
 
     url = 'https://www.allrecipes.com/recipes/96/salad/'
-    r = requests.get(url, headers=headers)
+    r = requests.get(url, headers=headers, timeout=30)
     if r.status_code == 200:
         html = r.text
         soup = BeautifulSoup(html, 'lxml')
